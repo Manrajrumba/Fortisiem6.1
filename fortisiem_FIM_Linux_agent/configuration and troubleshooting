@@ -1,0 +1,65 @@
+#installing the linux agent considering all the required package for auditing in linux are installed
+##create a user for agent so that user is responsible for authentication and setup a communication between fortisiem super and agent through collector.
+
+./fortisiem-linux-agent-installer-6.1.0.0112.sh -s <SUPER_IP> -i <ORG_ID> -o <ORG_NAME> -u <AGENT_USER> -p <AGENT_PWD> -n <HOST_NAME>     ##org_id for supervisor is 1
+
+bash fortisiem-linux-agent-installer-6.1.0.0112.sh -s <SUPER_IP> -i <ORG_ID> -o <ORG_NAME> -u <AGENT_USER> -p <AGENT_PWD> -n <HOST_NAME>  ##org_name for supervisor is Super
+
+#default agent installtion file is /opt/fortinet/fortisiem/linux-agent/
+
+#to see the status of fortisiem linux agent.
+
+systemctl status fortisiem-linux-agent.service
+systemctl stop fortisiem-linux-agent.service
+systemctl start fortisiem-linux-agent.service
+
+#to work agent properly in linux machine rsyslog is to configured properly and running
+
+systemctl status rsyslog
+
+
+############troubleshooting_part###############
+
+cat /opt/fortinet/fortisiem/linux-agent/log/fortisiem-linux-agent.log   ##  log related to the communication between fortisiem agent and supervisor
+tail -f /opt/fortinet/fortisiem/linux-agent/log/fortisiem-linux-agent.log   ##
+cat /opt/fortinet/fortisiem/linux-agent/log/fortisiem-linux-agent.log | grep /etc/manraj (watched direcory name)  ###  auditing successful or failed on watched file or directory.
+cat /opt/fortinet/fortisiem/linux-agent/config/linux-agent-config.txt       ##log related to the configuration of agent in linux machine.
+cat /opt/fortinet/fortisiem/linux-agent/config/fsm-fim.conf               ## log related to FIM: contains the list of all watched file in linux machine that is pushed from fortisiem template
+
+cat /etc/audit/auditd.conf    ## default auditing configuration file in linux machine
+cat /etc/audit/rules.d/audit.rules  ## rules for watching file or directory
+cat /etc/audit/audit.rules      ## to see the auditing rules
+
+ausearch -h
+ausearch -f /root/Desktop
+ausearch -f /tmp
+ausearch -f /etc/sysconfig
+
+auditctl -l
+auditctl -h
+
+cat /opt/fortinet/fortisiem/linux-agent/bin/VERSION   ##to see the version of agent.
+
+
+testing FIM IN /etc/File_name or /etc/sysconfig
+
+### log search from fortisiem
+  reporting ip = IP_ADDRES_of_linuxmachine and raw event log contain FSM_LINUX_FILE_CREATE
+                                                                     FSM_LINUX_FILE_DELETE
+                                                                     FSM_LINUX_FILE_ATTRIB_CHANGE
+                                                                     
+                                                                     
+                                                                    
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+
+
+
+
