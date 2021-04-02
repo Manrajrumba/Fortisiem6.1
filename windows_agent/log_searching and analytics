@@ -1,0 +1,8 @@
+########## log searching in fortisiem for windows agent###############
+reporting ip = ip_address AND raw event log contain 4625     ##logon failure
+reporting ip = ip_address AND raw event log contain 4624     ##logon sucess
+reporting ip = ip_address AND raw event log contain WUA-FileMon AND raw event log contain Added   #### fim feature with file added
+reporting ip = ip_address AND raw event log contain WUA-FileMon AND raw event log contain Removed   #### file or folder deleted
+reporting ip = ip_address AND raw event log contain WUA-FileMon AND raw event log contain Renamed   ###file renamed
+reporting ip = ip_address AND raw event log contain WUA-FileMon AND raw event log contain Modified  ### file modification
+
