@@ -107,6 +107,8 @@ note: testing FIM IN /etc/File_name or /etc/sysconfig
   reporting ip = IP_ADDRES_of_linuxmachine and raw event log contain FSM_LINUX_FILE_CREATE
                                                                      FSM_LINUX_FILE_DELETE
                                                                      FSM_LINUX_FILE_ATTRIB_CHANGE
+                                                                     FSM_LINUX_FILE_MODIFY
+                                                                     FSM_LINUX_FILE_OPEN
                                                                      
                                                                      
                                                                     
