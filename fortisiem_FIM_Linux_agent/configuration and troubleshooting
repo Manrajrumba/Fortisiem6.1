@@ -112,9 +112,9 @@ note: testing FIM IN /etc/File_name or /etc/sysconfig
                                                                      
                                                                      
 ######## permission = 755 on folder for FIM permission and ownership related #######                                                                    
-                                                                     
-                                                                     
-                                                                     
+                                                                                                                                          
+### UNIX login related log search ####
+Event Type IN EventTypes: Dev Logon Failure AND Reporting IP IN Devices: Unix
                                                                      
                                                                      
                                                                      
