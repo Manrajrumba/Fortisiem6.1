@@ -111,7 +111,7 @@ note: testing FIM IN /etc/File_name or /etc/sysconfig
                                                                      FSM_LINUX_FILE_OPEN
                                                                      
                                                                      
-                                                                    
+######## permission = 755 on folder for FIM permission and ownership related #######                                                                    
                                                                      
                                                                      
                                                                      
