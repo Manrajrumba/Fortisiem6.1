@@ -2,4 +2,10 @@ https://docs.fortinet.com/document/fortisiem/5.3.0/external-systems-configuratio
 
 https://helpdesk.kaseya.com/hc/en-gb/articles/229043428-Configuring-A-Regular-non-admin-User-Account-For-WMI-Monitoring
 
+wmimgmt.msc enter rightclick wmicontrol properties add user(wmi object access user) with allow=execute methods, remote enable, enable account. to advanced, select user select namespaces
+and subnamespace from dropdown and permissions=execute method,enable account and remote enable ok ok ok ok.
+
+control panel>administrative tools>component services>computer>mycomputer's properties> com security > launch and activation permissions>edit limits>add user(who have wmi object access)>permissions
+allow=remote launch, remote activation , local launch> apply ok ok......
+
 
