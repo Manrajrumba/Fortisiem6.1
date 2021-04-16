@@ -1,0 +1,36 @@
+#### for linux related priv escalation
+### make a user in linux without password and type cmd su -user_name(priveleged user)###
+for analytics search in fortisiem:::::: 
+
+reporting ip = ip_add AND raw event log contain pam_unix 
+reporting ip = ip_add AND raw event log contain su 
+
+## password change 
+For password change of user in linux(syslog)
+reporting ip = ip_add AND raw event log contain password AND raw event log contain user_name
+
+### groupd and user configuration ###
+For user added to group(syslog)
+reporting ip = ip_add AND raw event log contain user_name AND raw event log contain group
+reporting ip = ip_add AND raw event log contain user_name AND raw event log contain group_name
+
+For groupd added in linux(syslog)
+reporting ip = ip_add AND raw event log contain group AND raw event log contain added
+reporting ip = ip_add AND raw event log contain group AND raw event log contain GID=1002
+
+For user removing from group in linux(syslog)
+reporting ip = ip_add AND raw event log contain delete AND raw event log contain user_name AND raw event log contain group_name
+
+For user delete in linux(syslog)
+reporting ip = ip_add AND raw event log contain user_name AND raw event log contain delete
+
+## Authentication log
+For user loging in linux(syslog)
+reporting ip = ip_add AND raw event log contain login AND raw event log contain username 
+
+for user login failed (syslog)
+reporting ip = ip_add AND raw event log contain user_name AND raw event log contain authentication failure         ### event name=failed ssh logon for ssh related login failed 
+
+
+
+
