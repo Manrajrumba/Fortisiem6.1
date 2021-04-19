@@ -1,0 +1,17 @@
+### how to find the logon related logs in fortisiem for windows machine ###
+reporting ip = ip_add AND Event Type IN Win-Security-4624 
+reporting ip = ip_add AND Event Type IN Win-Security-4625
+reporting ip = ip_add AND Event Type IN Win-Security-4625 AND Raw Event Log CONTAIN remote    ### for remote logon failure. ###
+
+
+
+### executing malicious code in remote machine with PsExec(Sysinternal) ###
+psexec \\destination_ip_address -u domain\username -p password calc
+psexec \\destination_ip_address -u domain\username -p password cmd      ### executing cmd.exe in remote machine
+psexec \\destination_ip_address -u domain\username -p password powershell     ### executing powershell.exe remote machine
+
+
+@@@ detecing in fortisiem @@@
+reporting ip = ip_address AND Event Type IN Win-Sysmon-1-Create-Process AND Raw Event Log CONTAIN psexec   
+
+
