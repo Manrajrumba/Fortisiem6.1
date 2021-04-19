@@ -14,4 +14,10 @@ psexec \\destination_ip_address -u domain\username -p password powershell     ##
 @@@ detecing in fortisiem @@@
 reporting ip = ip_address AND Event Type IN Win-Sysmon-1-Create-Process AND Raw Event Log CONTAIN psexec   
 
+### installing software on remote machine with psexec
+psexec \\remote_machine -u domain\user -p Password -i -s msiexec.exe /i "C:\Users\Administrator\Downloads\Firefox Setup 87.0.msi" /qn /norestart 
+
+## this above command end with msiexec.exe exited on 192.168.124.230 with error code 0 ## this only work with .msi setup file in windows. 
+
+reporting ip = ip_address AND Event Type IN Win-Sysmon-1-Create-Process AND Raw Event Log CONTAIN psexec      ### for detection of installing software remotely with psexec ###
 
