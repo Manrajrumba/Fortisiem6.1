@@ -22,3 +22,7 @@ psexec \\remote_machine -u domain\user -p Password -i -s msiexec.exe /i "C:\User
 
 reporting ip = ip_address AND Event Type IN Win-Sysmon-1-Create-Process AND Raw Event Log CONTAIN psexec      ### for detection of installing software remotely with psexec ###
 
+
+### how to detect software installation process through UEBA in fortisiem analytics. ###
+Event Type = FINS-Windows-new-process-created AND Process Name REGEXP .*(install|msiexec|setup|update).*\.exe AND Raw Event Log CONTAIN App_installer_name.
+
