@@ -28,3 +28,9 @@ Event Type = FINS-Windows-new-process-created AND Process Name REGEXP .*(install
 
 ### how to detect hacking tools(nmap) usage by watched user(ueba engine) in fortisiem analytics ###
 Event Type = FINS-Windows-new-process-created AND Process Name IN nmap, nmap.exe, zenmap, zenmap.exe 
+
+
+### how to restart fortisightagent(For UEBA telemetry) in supervisor. ###
+systemctl restart phFortiInsightAI
+phstatus
+
