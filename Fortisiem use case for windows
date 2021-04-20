@@ -13,6 +13,7 @@ psexec \\destination_ip_address -u domain\username -p password powershell     ##
 
 @@@ detecing in fortisiem @@@
 reporting ip = ip_address AND Event Type IN Win-Sysmon-1-Create-Process AND Raw Event Log CONTAIN psexec   
+reporting ip = ip_address AND Event Type = FINS-Windows-new-process-created AND Process Name IN psexec.exe ### this one for ueba related rule trigger i.e. detecting hacking tools usage. ###
 
 ### installing software on remote machine with psexec
 psexec \\remote_machine -u domain\user -p Password -i -s msiexec.exe /i "C:\Users\Administrator\Downloads\Firefox Setup 87.0.msi" /qn /norestart 
