@@ -3,6 +3,14 @@ reporting ip = ip_add AND Event Type IN Win-Security-4624
 reporting ip = ip_add AND Event Type IN Win-Security-4625
 reporting ip = ip_add AND Event Type IN Win-Security-4625 AND Raw Event Log CONTAIN remote    ### for remote logon failure. ###
 
+### how to find the domain user create in fortisiem for windows machine ###
+reporting ip = ip_add AND Event Type IN Win-Security-4720
+
+### how to find the domain user's password change in fortisiem for windows machine ###
+reporting ip = ip_add AND Event Type IN Win-Security-4724
+
+event id = 4724 for password reset or changed by admin
+event id = 4723 for password reset or changed by user 
 
 
 ### executing malicious code in remote machine with PsExec(Sysinternal) ###
