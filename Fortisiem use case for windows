@@ -28,6 +28,21 @@ https://www.manageengine.com/products/active-directory-audit/active-directory-au
 https://support.logbinder.com/SuperchargerKB/50135/8-Install-Supercharger-with-Splunk-Light-and-the-Splunk-App-for-LOGbinder
 
 
+### how to find a domain user added to any group in AD environment ###
+for that there is two type of group is available in AD environment, one is distribution(usually used for mailing purpose) which  is security disabled and another is security enabled i.e security group.
+
+for that auditing of distribution and security group should be enabled..
+go to default domain controller policy and edit it, go computer configuration>policies>windows settings>security settings>advanced audit policy configuration>account management
+>audit distribution group management and enable this to success and failure.
+and for security group enable audit security group management in the same place...
+
+In fortisiem side,
+reporting ip = ip_add AND Event Type IN Win-Security-4761
+reporting ip = ip_add AND Event Type IN Win-Security-4746
+
+event id = 4761(A member was added to a security-disabled universal group)
+event id = 4746(A member was added to a security-disabled local group)
+
 
 
 ### how to find the logon related logs in fortisiem for windows machine ###
