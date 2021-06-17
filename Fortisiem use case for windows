@@ -9,9 +9,13 @@ reporting ip = ip_add AND Event Type IN Win-Security-4720
 ### how to find the domain user's password change in fortisiem for windows machine ###
 reporting ip = ip_add AND Event Type IN Win-Security-4724
 
+### how to find the audit policy change in windows 
+reporting ip = ip_add AND Event Type IN Win-Security-4719
+
+
 event id = 4724 for password reset or changed by admin
 event id = 4723 for password reset or changed by user 
-
+event id = 4719 for audit policy change
 
 ### executing malicious code in remote machine with PsExec(Sysinternal) ###
 psexec \\destination_ip_address -u domain\username -p password calc
