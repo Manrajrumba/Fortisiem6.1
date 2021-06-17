@@ -1,3 +1,35 @@
+###### Auditing configuration in windows machine to enable auditing and hence get the related logs in Fortisiem ######
+
+go in windows run, and type gpmc.msc 
+then right click default domain controller policy under domain controller tab, and then click edit...
+then group policy management editor or console will open....
+then go computer configuration>policies>windows settings>security settings>local policies....
+
+to get the logs related to active directory service or object access actions you need to set success and failure to audit directory service access
+to get the logs related to ADDS(active directory domain service) access,
+then go to computer configuration>policies>windows settings>security settings>advanced audit policy configuration>audit policies>DS access
+
+And then enable or set success or failure settings to audit directory service access
+and then enable or set success or failure settings to audit directory service changes..
+
+to get the logs related to account management i.e account creation, account deletion, account attribute modification;....password changess..
+need to enable auditing on account management section, which is under local policies>audit policies>account management and in advanced audit policy as well.
+
+related help links are give below
+
+https://www.lepide.com/how-to/enable-active-directory-security-auditing.html
+https://www.lepide.com/how-to/enable-auditing-of-ad-objects-in-windows-server-2012.html
+https://techcommunity.microsoft.com/t5/itops-talk-blog/step-by-step-enabling-advanced-security-audit-policy-via/ba-p/282452
+https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-enable-auditing-of-active-directory-objects-in-windows-server.html
+https://www.youtube.com/watch?v=U-ASEWWDYPI
+https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn311490(v=ws.11)
+https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn319056(v=ws.11)
+https://www.manageengine.com/products/active-directory-audit/active-directory-auditing-configuration-guide-configure-audit-policies-manually.html
+https://support.logbinder.com/SuperchargerKB/50135/8-Install-Supercharger-with-Splunk-Light-and-the-Splunk-App-for-LOGbinder
+
+
+
+
 ### how to find the logon related logs in fortisiem for windows machine ###
 reporting ip = ip_add AND Event Type IN Win-Security-4624 
 reporting ip = ip_add AND Event Type IN Win-Security-4625
