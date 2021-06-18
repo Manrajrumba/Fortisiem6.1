@@ -40,8 +40,21 @@ In fortisiem side,
 reporting ip = ip_add AND Event Type IN Win-Security-4761
 reporting ip = ip_add AND Event Type IN Win-Security-4746
 
-event id = 4761(A member was added to a security-disabled universal group)
-event id = 4746(A member was added to a security-disabled local group)
+event id = 4761 (A member was added to a security-disabled universal group)
+event id = 4746 (A member was added to a security-disabled local group)
+event id = 4762 (A member was removed from a security-disabled universal group)
+event id = 4763 (A security-disabled universal group was deleted)
+event id = 4759 (A security-disabled universal group was created)
+event id = 4754 (A security-enabled universal group was created that means security group created.)
+
+
+### how to detect or track ou related in AD environment like ou created, ou delted, ou changed ###
+
+useful links are given below
+
+https://www.manageengine.com/products/active-directory-audit/how-to/how-to-track-organizational-unit-changes-in-ad.html
+https://www.netwrix.com/how_to_detect_changes_to_organizational_units_and_groups_in_active_directory.html
+
 
 
 
