@@ -11,3 +11,29 @@ run command
 @@@ note: here collector is the name of collector which is to be created in fortisiem under super @@@@
 then collector will be registered and restart automatically....
 
+#### for agent user we have to create a user who have agent admin permission ### other wise following errors will be generated....
+ Date :Jun 20 2021 [16:33:02]  INFO : AOWebService : commonConstruct started 
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : CollectorManager : ctor started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : CollectorManager : ctor ended  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : ctor started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : CollectorManager : PingCollectors started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : ctor ended  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : ctor started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : ctor ended  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : CollectorManager : PingCollectors ended  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : AoWebService : SetProtocol started 
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : AoWebService : SetProtocol ended with S_RESULT_FALSE 
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : AOWebService : commonConstruct ended 
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : AoWebService : Register started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : Register started  
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : https://192.168.132.183:443/phoenix/rest/register/windowsAgent 
+﻿ Date :Jun 20 2021 [16:33:02]  INFO : SuperManager : Request= <?xml version="1.0" encoding="utf-8"?><request><winAgent><orgName>Super</orgName><orgId>1</orgId><machineGUID>B2E65D3A-8525-4565-9B21-563DF05CE300</machineGUID><agentVersion>4.0.0</agentVersion><do main>kumaribank.com</domain><hostname>TEMP-FS</hostname><hostIP>192.168.150.4</hostIP><vendor>Microsoft</vendor><model>Microsoft Windows Server 2012 R2 Standard</model><version>6.3.9600</version><FINS>on</FINS></winAgent></request> 
+﻿ Date :Jun 20 2021 [16:33:04]  ERROR : AoWebService : Register exception The remote server returned an error: (403) Forbidden. 
+﻿ Date :Jun 20 2021 [16:33:04]  INFO : AoWebService : Register ended with E_RESULT_UNEXP_ERROR 
+﻿ Date :Jun 20 2021 [16:33:46]  INFO : AOWebService : commonDestroy started 
+﻿ Date :Jun 20 2021 [16:33:46]  INFO : CollectorManager : Dispose started  
+﻿ Date :Jun 20 2021 [16:33:46]  INFO : CollectorManager : Dispose ended  
+﻿ Date :Jun 20 2021 [16:33:46]  INFO : AOWebService : commonDestroy ended 
+
+
+this is the log file of proxytrace.log which is located in C:\ProgramData\AccelOps\Agent\Logs\  path...
