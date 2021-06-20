@@ -1,0 +1,13 @@
+### first of all install the collector as given in the fortisiem docs. ###
+link = https://docs.fortinet.com/document/fortisiem/6.1.1/esx-installation-and-migration-guide/131018/fresh-installation#set_collector_name
+
+after installing collector you have to create a collector name in fortisiem under the name of super...see docs how to create a collector name in siem
+
+after that giving proper ip for collector and having communication with super,
+run command 
+/opt/phoenix/bin/phProvisionCollector --add <user> '<password>' <Super IP or Host> <Organization> <CollectorName>
+/opt/phoenix/bin/phProvisionCollector --add admin 'VMware1!' 192.168.132.183 Super collector
+
+@@@ note: here collector is the name of collector which is to be created in fortisiem under super @@@@
+then collector will be registered and restart automatically....
+
