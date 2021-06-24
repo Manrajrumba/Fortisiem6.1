@@ -1,0 +1,3 @@
+after install the collector, we need to register the collector to supervisor.
+before that we need to add worker in settings>system>event worker in worker address add the ip address of super node...because this is all-in-one architecture. after that 
+need to create collector template from admin>setup>collector...
