@@ -16,3 +16,25 @@ Go to Advanced Audit Policy Configuration → Audit Policies → Object Access:
     Click  Show Advanced Permissions, select Change permissions and Take ownership.
 ### this setting for metadata about FIM ###
 
+
+useful link:https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-find-out-who-changed-the-folder-permissions.html
+
+### now log search and analytics part ###
+>>> File or Directory created/added to monitored file/folder under the hood of FIM in fortisiem
+ reporting ip = ip-address of file server AND event type IN AO-WUA-FileMon-Added
+ 
+ >>> File Or Directory Deleted
+ reporting ip = ip-address of file-server AND event type IN AO-WUA-FileMon-Removed
+ 
+ >>> File content Modified
+ reporting ip = ip-address of file-server AND event type IN AO-WUA-FileMon-Modified
+ 
+ >>> File Renamed
+ reporting ip = ip-address of File-server AND event type IN AO-WUA-FileMon-Renamed-New-Name
+ 
+ >>>File/directory permission changed
+ reporting ip = ip-address of File-Server AND event type IN AO-WUA-FileMon-PermissionChange
+ 
+ >>> file/directory ownershipp changed
+ reporting ip = ip-addresss of File-Server AND event type IN 
+ 
