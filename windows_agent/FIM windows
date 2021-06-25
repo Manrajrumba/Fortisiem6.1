@@ -1,0 +1,18 @@
+need to enable file audting setting in domain controller policy
+
+Go to your Group Policy management console, and edit the Default Domain Policy.
+Go to Computer Configuration → Policies → Windows Settings → Security Settings.
+Go to Local Policies → Audit Policy: Audit object access. Select both Success and Failures.
+Go to Advanced Audit Policy Configuration → Audit Policies → Object Access:
+
+    Audit File System: Select both Success and Failures.
+    Audit Handle Manipulation: Select both Success and Failures.
+
+### ###
+ Setting up the file's audit system access control list (SACL):
+
+    Select the file you want to audit and go to Properties. Select the Security tab → Advanced → Auditing → Add. 
+    Select Principal: Everyone; Type: All; Applies to: This folder, sub-folders, and files.
+    Click  Show Advanced Permissions, select Change permissions and Take ownership.
+### this setting for metadata about FIM ###
+
