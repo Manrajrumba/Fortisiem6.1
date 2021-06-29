@@ -1,0 +1,95 @@
+https://docs.fortinet.com/document/fortisiem/6.1.2/external-systems-configuration-guide/865945/microsoft-sql-server
+
+<<<steps elaboration>>>
+
+To be able to retrieve Performance log and audit log from the MQ SQL database, you need to create a specific account in that database.
+
+For Performance Monitoring and Audit Trail that you want to collect through JDBC:
+- Log in to your SQL Server with an 'sa' account
+- Create a user that can login to the DB with name 'AOPerfLogin', password 'ProspectHills!' and database name 'master' which is the default value but can be changed if you have a specific other DB name:
+# EXEC SP_ADDLOGIN 'AOPerfLogin', 'ProspectHills!', 'master';
+- Create a new role:
+# EXEC SP_ADDROLE 'AOPerfRole';
+- Create the new user 'AOPerfUser' and associate it to the login 'AOPerfLogin' and role 'AOPerfRole'
+# EXEC SP_ADDUSER 'AOPerfLogin', 'AOPerfUser', 'AOPerfRole';
+- Allow the 'VIEW SERVER STATE' permission to AOPerfLogin:
+# GRANT VIEW SERVER STATE TO AOPerfLogin;
+- Allow the role AOPerfRole to read the system table dbo.sysperfinfo:
+# GRANT SELECT ON dbo.sysperfinfo TO AOPerfRole;
+- Allow the role AOPerfRole to run the command xp_readerrorlog to read SQL Server log:
+# GRANT EXEC on xp_readerrorlog to AOPerfRole
+
+
+
+
+<<<<about script>>>
+Here is the order of execution:
+1/ PH_EventDB_Tables_Create.sql will create 2 tables: PH_Events.dbo.LogonEvents to store logon actions and PH_Events.dbo.DDLEvents to store all the changes on the DB.
+2/ PH_LogonEventsTrigger.sql will create a trigger to catch all logon actions and save it to the PH_Events.dbo.LogonEvents table.
+3/ PH_Database_Level_Events.sql will create a trigger to catch all changes on the DB and save it to the PH_Events.dbo.DDLEvents table.
+4/ PH_DDL_Server_Level_Events.sql will create a trigger to catch DDL_ENDPOINT_EVENTS, DDL_LOGIN_EVENTS, DDL_GDR_SERVER_EVENTS, DDL_AUTHORIZATION_SERVER_EVENTS, CREATE_DATABASE, 
+ALTER_DATABASE, DROP_DATABASE on the server and save it to the PH_Events.dbo.DDLEvents.
+
+As it's capturing a lot of data this will affect the load on the SQL Server.
+
+Along the load already present on the SQL Server, I would suggest you to increase performance of your database and/or acquire, trigger less data by customizing the previous 
+.sql scripts (which is out of TAC scope, but to give you an example: identify exactly the changes you want instead of using DDL_DATABASE_LEVEL_EVENTS group in 
+PH_Database_Level_Events.sql).
+
+
+4 types of triggers in SQL server(DML triggers, DDL triggers, CRL=common runtime language trigger and Logon triggers)
+
+DDL=data discription language
+DDL triggers= DDL triggers fires in response of DDL events, create alter, drop(table,function,index,stored procedures etc.)
+
+DML=data manipulation language
+
+certain system stored procedures that perform DDL-like oprations can also fire DDL triggers.
+
+@@ what is the use of DDL triggers in MS-SQL server ??@@
+- to prevent certain changes to your database schema
+- audit the changes that the users are making to the database structure 
+- to track the user activity in DB.
+
+IMPORTANT: DDL TRIGGERS SCOPE = DDL triggers can be created in specific database or at the server level.
+
+IMPORTANT links about auditing the ms-sql db:
+https://www.youtube.com/watch?v=N7XYyTy4lz8
+https://www.youtube.com/watch?v=XLBNKDUrHs0
+
+information gained from ddl triggers:
+for example, if somebody modifies a table, I want to capture information like login name of a user who modified the table, what is the name of table, what is the name of database in 
+which that table is modified, what is the date and time that user modified that table and waht is the exact DDL statement that executed to modify the table? All that informations 
+can be captured using a DDL triggers. And can be stored in seperate table on your chosen database.
+
+DDL triger syntax:
+                  CREATE TRIGGER [trigger name]
+                  ON [server|database]
+                  FOR [DDL event list:event type1, event type2....]
+                  AS 
+                  BEGIN
+                    ---Trigger body
+                  END 
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
