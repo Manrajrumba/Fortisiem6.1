@@ -1,2 +1,15 @@
+login to supervisor at very first:
+user:     root
+password: ProspectHills
+set host name: super > hostnamectl set-hostname super
+
+configure IP for super:
+
 cd /usr/local/bin
-configFSM.sh
+./configFSM.sh
+
+need to request for updating the new valid license file for new hardware ID which can be seen in the license import part. This can be done from the fortinet technically live chat.
+
+< after importing license file, need to choose the disk option for event DB, for all-in-one deployment scenario, choose local disk. with disk name: /dev/sde etc. etc.> 
+
+
