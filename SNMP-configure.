@@ -1,0 +1,16 @@
+install net-snmp net-snmp-libs net-snmp-utils(for snmp manager)
+install net-snmp-utils(for agent)
+edit the file /etc/snmp/snmpd.conf 
+need to edit the line "com 2sec notConfigUser default public"
+
+rocommunity mysnmp1! 192.168.127.1 (rocommunity means read only, community string, ip of monitoring server)(for siem perspective ip of siem server)
+restart the snmpd service.
+
+test from local host: snmpwalk -v2c -c public localhost
+                      snmpwalk -v 2c -c public -O e 127.0.0.1
+                     
+test from snmp agent side (from siem side):
+                      snmpwalk -v 2c -c public -O e 172.0.25.160(ip of snmp manager, ie. ip of machine whose monitoring should be done)
+                      snmpwalk -v 2c -c public -O e IP_OF_fortigate_400E (command from fortisiem side.)
+                      
+                      
